@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fetch API</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+  </head>
+  <body onload="">
+    <button id="getText">Get Json</button>
+    <div id="output"></div>
+    <script type="text/javascript">
+      document.getElementById("getText").addEventListener("click", getJson);
+
+      function getJson() {
+        fetch("index.json")
+          .then(function (response) {
+            return response.json(); //this gives us the promise
+          })
+          .then(function (data) {
+            //after resolving the promise we can access the actual content thru here
+            console.log(data);
+            let output = "<h2> The Stuff </h2>";
+            // document.getElementById('output').innerHTML = data;
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+        //es6
+        //fetch('index.js').then(res => res.text()).then(data => console.log(data));
+      }
+    </script>
+  </body>
 </html>
